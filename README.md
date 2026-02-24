@@ -167,7 +167,7 @@ jetson-containers run \
 ### Step 7: Install missing dependencies (inside container)
 
 ```bash
-PIP_INDEX_URL=https://pypi.org/simple pip install timm einops
+PIP_INDEX_URL=https://pypi.org/simple pip install timm mlflow
 ```
 
 > These need to be reinstalled every time you restart the container. To avoid this, see the tip below.
