@@ -34,7 +34,7 @@ The container sets `PIP_INDEX_URL=http://jetson.webredirect.org/...` which redir
 
 **Solution:** Override the index URL when installing packages:
 ```bash
-PIP_INDEX_URL=https://pypi.org/simple pip install timm einops
+PIP_INDEX_URL=https://pypi.org/simple pip install timm mlflow
 ```
 
 ### 3. ImageNet dataset structure
