@@ -221,7 +221,7 @@ time: 1.2500  data: 0.0008
 Data loading is already ~1500x faster than GPU inference. Adding more workers only speeds up data loading, which is already negligible. The bottleneck is entirely GPU compute.
 
 **Recommendation: `num_workers=2` is sufficient.**
----
+
 
 ## References
 
