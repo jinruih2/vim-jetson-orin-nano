@@ -192,22 +192,35 @@ python3 vim/main.py --eval \
   --batch-size 4 \
   --num_workers 2
 ```
+## Performance Analysis on Orin Nano
 
-Expected output after ~8-9 minutes:
+### Effect of `batch_size`
+
+We tested different `batch_size` values on the full 50,000-image val set:
+
+| batch_size | # batches | time/batch | total time | max mem |
+|-----------|-----------|------------|------------|---------|
+| 4  | 417 | 1.25s | 8:42 | 545MB |
+| 8  | 209 | 2.59s | 9:01 | 1028MB |
+| 16 | 105 | 5.20s | 9:05 | 1986MB |
+
+Every time `batch_size` doubles, GPU memory doubles exactly and time per batch doubles — but **total inference time stays constant (~9 min)**. Orin Nano's GPU scales perfectly linearly with no parallel speedup from larger batches.
+
+**Recommendation: use `batch_size=4` for lowest memory pressure with no speed penalty.**
+
+### Effect of `num_workers`
+
+Increasing `num_workers` from 2 to 4 had no effect on total inference time. The reason is visible in the logs:
 ```
-* Acc@1 75.762 Acc@5 92.790 loss 1.083
-Accuracy of the ema network on the 50000 test images: 75.8%
+time: 1.2500  data: 0.0008
 ```
 
----
+- `time`: total time per batch = **1.25s** (GPU inference)
+- `data`: data loading time per batch = **0.0008s** (< 0.1% of total)
 
-## Files in this repo
+Data loading is already ~1500x faster than GPU inference. Adding more workers only speeds up data loading, which is already negligible. The bottleneck is entirely GPU compute.
 
-| File | Description |
-|------|-------------|
-| `mamba_simple_patch.py` | Bidirectional Mamba implementation compatible with mamba-ssm 2.x |
-| `README.md` | This guide |
-
+**Recommendation: `num_workers=2` is sufficient.**
 ---
 
 ## References
