@@ -463,7 +463,7 @@ def main(args):
         lr_scheduler.step(args.start_epoch)
         
     if args.eval:
-        test_stats = evaluate(data_loader_val, model, device, amp_autocast)
+        test_stats = evaluate(data_loader_val, model, device, amp_autocast, enable_profiling=True)
         print(f"Accuracy of the network on the {len(dataset_val)} test images: {test_stats['acc1']:.1f}%")
 
         test_stats = evaluate(data_loader_val, model_ema.ema, device, amp_autocast)

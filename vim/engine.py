@@ -8,6 +8,9 @@ import sys
 from typing import Iterable, Optional
 
 import torch
+from torch.profiler import profile, record_function, ProfilerActivity
+
+from contextlib import suppress
 
 import timm
 from timm.data import Mixup
@@ -102,33 +105,49 @@ def train_one_epoch(model: torch.nn.Module, criterion: DistillationLoss,
 
 
 @torch.no_grad()
-def evaluate(data_loader, model, device, amp_autocast):
+def evaluate(data_loader, model, device, amp_autocast, enable_profiling=False):
     criterion = torch.nn.CrossEntropyLoss()
-
     metric_logger = utils.MetricLogger(delimiter="  ")
     header = 'Test:'
-
-    # switch to evaluation mode
     model.eval()
 
-    for images, target in metric_logger.log_every(data_loader, 10, header):
+    if enable_profiling:
+        profiler = profile(
+            activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA],
+            record_shapes=True,
+            profile_memory=True,
+            with_stack=True,
+            schedule=torch.profiler.schedule(wait=0, warmup=1, active=3, repeat=1),
+            on_trace_ready=torch.profiler.tensorboard_trace_handler('./prof_output'),
+        )
+        profiler.start()
+
+    for i, (images, target) in enumerate(metric_logger.log_every(data_loader, 10, header)):
         images = images.to(device, non_blocking=True)
         target = target.to(device, non_blocking=True)
 
-        # compute output
         with amp_autocast():
-            output = model(images)
-            loss = criterion(output, target)
+            with record_function("model_inference") if enable_profiling else suppress():
+                output = model(images)
+            with record_function("loss_compute") if enable_profiling else suppress():
+                loss = criterion(output, target)
 
         acc1, acc5 = accuracy(output, target, topk=(1, 5))
-
         batch_size = images.shape[0]
         metric_logger.update(loss=loss.item())
         metric_logger.meters['acc1'].update(acc1.item(), n=batch_size)
         metric_logger.meters['acc5'].update(acc5.item(), n=batch_size)
-    # gather the stats from all processes
+
+        if enable_profiling:
+            profiler.step()
+            if i >= 3:
+                break
+
+    if enable_profiling:
+        profiler.stop()
+        print(profiler.key_averages().table(sort_by="cuda_time_total", row_limit=20))
+
     metric_logger.synchronize_between_processes()
     print('* Acc@1 {top1.global_avg:.3f} Acc@5 {top5.global_avg:.3f} loss {losses.global_avg:.3f}'
           .format(top1=metric_logger.acc1, top5=metric_logger.acc5, losses=metric_logger.loss))
-
     return {k: meter.global_avg for k, meter in metric_logger.meters.items()}
