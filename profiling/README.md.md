@@ -5,7 +5,43 @@ The profiler was configured to skip 1 warmup batch and actively profile 3 batche
 
 ---
 
-## Visualize with TensorBoard
+## How to Reproduce
+
+Add the following to `engine.py` and call `evaluate(..., enable_profiling=True)` from `main.py`:
+
+```python
+# engine.py — top of file
+from torch.profiler import profile, record_function, ProfilerActivity
+
+# engine.py — evaluate() signature
+def evaluate(data_loader, model, device, amp_autocast, enable_profiling=False):
+
+    # inside evaluate(), before the loop
+    if enable_profiling:
+        profiler = profile(
+            activities=[ProfilerActivity.CPU, ProfilerActivity.CUDA],
+            record_shapes=True,
+            profile_memory=True,
+            with_stack=True,
+            schedule=torch.profiler.schedule(wait=0, warmup=1, active=3, repeat=1),
+            on_trace_ready=torch.profiler.tensorboard_trace_handler('./prof_output'),
+        )
+        profiler.start()
+
+    # inside the loop, after each batch
+    if enable_profiling:
+        profiler.step()
+        if i >= 3:
+            break
+
+    # after the loop
+    if enable_profiling:
+        profiler.stop()
+        print(profiler.key_averages().table(sort_by="cuda_time_total", row_limit=20))
+```
+
+Visualize with TensorBoard:
+```bash
 pip install tensorboard torch-tb-profiler
 tensorboard --logdir=./prof_output --host=0.0.0.0
 # then open http://<nano-ip>:6006 in your browser
@@ -14,6 +50,8 @@ tensorboard --logdir=./prof_output --host=0.0.0.0
 ---
 
 ## Overview — Execution Summary
+
+![Execution Summary](execution_summary.png)
 
 | Category     | Time (µs)  | Percentage |
 |--------------|------------|------------|
@@ -39,6 +77,13 @@ tensorboard --logdir=./prof_output --host=0.0.0.0
 
 SM Efficiency is near 100% (the GPU is always busy), but Achieved Occupancy is only 45%, meaning each SM is running at roughly half its theoretical thread capacity. The root cause is identified below in the Kernel View.
 
+---
+
+## Step Time Breakdown
+
+Each profiled step corresponds to one batch of 4 images. All 3 steps show a nearly identical pattern — almost entirely GPU kernel time (blue), with a tiny sliver of Memcpy (orange) and CPU Exec (teal). The execution is very stable across batches.
+
+---
 
 ## Module View
 
@@ -68,6 +113,8 @@ aten::item                  (loss.item() — CPU-GPU sync)
 ---
 
 ## Kernel View — Top 10 CUDA Kernels by Total Time
+
+![Kernel View](kernel_view.png)
 
 | Kernel | Calls | Total (µs) | Mean (µs) | Occupancy (%) |
 |--------|-------|------------|-----------|---------------|
