@@ -142,6 +142,67 @@ The profiler shows 0% Tensor Core utilization across all kernels. The likely cau
 
 ---
 
+## GPU Cache Analysis — Nsight Compute
+
+Cache analysis was performed using Nsight Compute (`ncu`) on a single warmed-up batch (batch index 2, after 2 warm-up forward passes). The following metrics were collected for all kernels:
+
+- `l1tex__t_sectors.sum` — L1 cache access count
+- `lts__t_sectors.sum` — L2 cache access count
+- `lts__t_sectors_lookup_hit.sum` — L2 hit count
+- `lts__t_sectors_lookup_miss.sum` — L2 miss count (= DRAM access count)
+
+L1 hit rate is derived as: `(L1 access - L2 access) / L1 access`
+L2 hit rate is derived as: `L2 hit / L2 access`
+
+### How to Reproduce
+
+```bash
+# Add cudaProfilerStart/Stop around the target batch in engine.py, then:
+ncu --metrics l1tex__t_sectors.sum,lts__t_sectors.sum,lts__t_sectors_lookup_hit,lts__t_sectors_lookup_miss \
+    --profile-from-start off \
+    -o ncu_output_one_batch \
+    python3 vim/main.py --eval \
+    --resume vim_t_midclstok_76p1acc.pth \
+    --model vim_tiny_patch16_224_bimambav2_final_pool_mean_abs_pos_embed_with_midclstok_div2 \
+    --data-path /workspace/imagenet \
+    --batch-size 4 \
+    --num_workers 2
+
+# View results
+ncu -i ncu_output_one_batch.ncu-rep --print-summary per-kernel > ncu_results.txt
+```
+
+### Results — Key Kernels
+
+| Kernel | L1 Access | L2 Access | L2 Hit | L2 Miss (DRAM) | L1 Hit Rate | L2 Hit Rate |
+|--------|-----------|-----------|--------|----------------|-------------|-------------|
+| `selective_scan_fwd_kernel` | 53,994,240 | 43,143,023 | 5,685,338 | 37,500,858 | 20% | 13% |
+| `ampere_sgemm_128x64_tn` | 12,487,680 | 12,432,573 | 12,150,255 | 1,134,466 | 0.4% | 97% |
+| `causal_conv1d_fwd_kernel` | 3,755,520 | 2,501,521 | 1,372,960 | 1,135,120 | 33% | 55% |
+| `ampere_sgemm_64x64_tt` | 7,381,440 | 6,245,542 | 5,405,583 | 1,148,274 | 15% | 87% |
+| `ampere_sgemm_32x128_tt` | 2,813,820 | 2,674,090 | 1,869,669 | 1,146,796 | 5% | 70% |
+
+### Analysis
+
+**`selective_scan_fwd_kernel` has extremely poor cache behavior:**
+- L1 hit rate only 20%, L2 hit rate only 13%
+- 87% of L2 accesses miss and go all the way to DRAM
+- L2 miss count (37.5M sectors) is ~33x higher than `sgemm_128x64` (1.1M sectors)
+- This explains why it consumes 60% of GPU time despite being an O(N) algorithm — it is heavily DRAM-bound
+
+**`ampere_sgemm_128x64_tn` has excellent cache behavior:**
+- L1 hit rate only 0.4% (data too large for L1)
+- But L2 hit rate is 97% — almost all data served from L2
+- DRAM access is minimal, making it much faster despite similar computation volume
+
+**Root cause of `selective_scan` cache inefficiency:**
+The SSM scan processes tokens sequentially. Each step reads the previous hidden state, updates it, and writes it back. Since the hidden state is large (state_size × channels) and changes every step, it cannot stay resident in L1 or L2 — each new token effectively evicts the previous state. This produces a streaming access pattern that defeats both cache levels.
+
+**Note on Orin Nano unified memory architecture:**
+CPU and GPU share the same physical DRAM. The L2 miss count above therefore represents actual shared DRAM accesses, not transfers to a separate GPU memory pool.
+
+---
+
 ## Summary & Optimization Directions
 
 | Observation | Implication |

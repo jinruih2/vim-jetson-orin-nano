@@ -1,0 +1,398 @@
+[313] python3.12@127.0.0.1
+  _5x_cudnn_ampere_scudnn_128x64_relu_interior_nn_v1 (184, 3, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------- ------------- -------------
+    Metric Name                    Metric Unit       Minimum       Maximum       Average
+    ------------------------------ ----------- ------------- ------------- -------------
+    l1tex__t_sectors.sum                sector 58,236,771.00 58,236,771.00 58,236,771.00
+    lts__t_sectors.sum                  sector 10,747,119.00 10,747,119.00 10,747,119.00
+    lts__t_sectors_lookup_hit.avg       sector  1,818,768.50  1,818,768.50  1,818,768.50
+    lts__t_sectors_lookup_hit.max       sector  1,822,465.00  1,822,465.00  1,822,465.00
+    lts__t_sectors_lookup_hit.min       sector  1,815,955.00  1,815,955.00  1,815,955.00
+    lts__t_sectors_lookup_hit.sum       sector  7,275,074.00  7,275,074.00  7,275,074.00
+    lts__t_sectors_lookup_miss.avg      sector  1,771,886.00  1,771,886.00  1,771,886.00
+    lts__t_sectors_lookup_miss.max      sector  1,772,688.00  1,772,688.00  1,772,688.00
+    lts__t_sectors_lookup_miss.min      sector  1,771,292.00  1,771,292.00  1,771,292.00
+    lts__t_sectors_lookup_miss.sum      sector  7,087,544.00  7,087,544.00  7,087,544.00
+    ------------------------------ ----------- ------------- ------------- -------------
+
+  _layer_norm_fwd_1pass_kernel (23640, 1, 1)x(32, 1, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 1,725,720.00 1,725,720.00 1,725,720.00
+    lts__t_sectors.sum                  sector 1,157,924.00 1,157,924.00 1,157,924.00
+    lts__t_sectors_lookup_hit.avg       sector   147,704.00   147,704.00   147,704.00
+    lts__t_sectors_lookup_hit.max       sector   147,776.00   147,776.00   147,776.00
+    lts__t_sectors_lookup_hit.min       sector   147,633.00   147,633.00   147,633.00
+    lts__t_sectors_lookup_hit.sum       sector   590,816.00   590,816.00   590,816.00
+    lts__t_sectors_lookup_miss.avg      sector   141,880.75   141,880.75   141,880.75
+    lts__t_sectors_lookup_miss.max      sector   141,891.00   141,891.00   141,891.00
+    lts__t_sectors_lookup_miss.min      sector   141,872.00   141,872.00   141,872.00
+    lts__t_sectors_lookup_miss.sum      sector   567,523.00   567,523.00   567,523.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  _layer_norm_fwd_1pass_kernel (23640, 1, 1)x(64, 1, 1), Device 0, CC 8.7, Invocations 24
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 2,860,440.00 2,860,440.00 2,860,440.00
+    lts__t_sectors.sum                  sector 2,290,406.00 2,291,569.00 2,290,808.00
+    lts__t_sectors_lookup_hit.avg       sector   289,580.00   289,644.75   289,618.71
+    lts__t_sectors_lookup_hit.max       sector   289,596.00   289,772.00   289,682.92
+    lts__t_sectors_lookup_hit.min       sector   289,515.00   289,608.00   289,561.04
+    lts__t_sectors_lookup_hit.sum       sector 1,158,320.00 1,158,579.00 1,158,474.83
+    lts__t_sectors_lookup_miss.avg      sector   283,737.75   283,757.75   283,747.71
+    lts__t_sectors_lookup_miss.max      sector   283,748.00   283,823.00   283,780.46
+    lts__t_sectors_lookup_miss.min      sector   283,712.00   283,720.00   283,712.96
+    lts__t_sectors_lookup_miss.sum      sector 1,134,951.00 1,135,031.00 1,134,990.83
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  ampere_sgemm_128x32_tn (185, 12, 1)x(256, 1, 1), Device 0, CC 8.7, Invocations 48
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 2,021,520.00 2,021,520.00 2,021,520.00
+    lts__t_sectors.sum                  sector 1,747,989.00 1,811,599.00 1,794,275.42
+    lts__t_sectors_lookup_hit.avg       sector   431,210.25   441,197.25   434,859.03
+    lts__t_sectors_lookup_hit.max       sector   431,780.00   442,854.00   435,536.58
+    lts__t_sectors_lookup_hit.min       sector   431,005.00   440,763.00   434,179.35
+    lts__t_sectors_lookup_hit.sum       sector 1,724,841.00 1,764,789.00 1,739,436.10
+    lts__t_sectors_lookup_miss.avg      sector    50,884.00    51,902.00    51,122.06
+    lts__t_sectors_lookup_miss.max      sector    50,936.00    52,000.00    51,186.92
+    lts__t_sectors_lookup_miss.min      sector    50,784.00    51,804.00    51,054.50
+    lts__t_sectors_lookup_miss.sum      sector   203,536.00   207,608.00   204,488.25
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  ampere_sgemm_128x64_tn (185, 12, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 24
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------- ------------- -------------
+    Metric Name                    Metric Unit       Minimum       Maximum       Average
+    ------------------------------ ----------- ------------- ------------- -------------
+    l1tex__t_sectors.sum                sector 12,487,680.00 12,487,680.00 12,487,680.00
+    lts__t_sectors.sum                  sector 12,428,290.00 12,436,888.00 12,432,572.58
+    lts__t_sectors_lookup_hit.avg       sector  3,036,727.00  3,038,546.00  3,037,563.78
+    lts__t_sectors_lookup_hit.max       sector  3,036,958.00  3,039,695.00  3,037,925.29
+    lts__t_sectors_lookup_hit.min       sector  3,033,719.00  3,038,314.00  3,037,192.04
+    lts__t_sectors_lookup_hit.sum       sector 12,146,908.00 12,154,184.00 12,150,255.12
+    lts__t_sectors_lookup_miss.avg      sector    283,540.00    283,701.00    283,616.54
+    lts__t_sectors_lookup_miss.max      sector    283,552.00    283,744.00    283,650.50
+    lts__t_sectors_lookup_miss.min      sector    283,516.00    283,664.00    283,584.00
+    lts__t_sectors_lookup_miss.sum      sector  1,134,160.00  1,134,804.00  1,134,466.17
+    ------------------------------ ----------- ------------- ------------- -------------
+
+  ampere_sgemm_32x128_tt (2, 185, 1)x(256, 1, 1), Device 0, CC 8.7, Invocations 48
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 2,813,820.00 2,813,820.00 2,813,820.00
+    lts__t_sectors.sum                  sector 2,641,498.00 2,683,133.00 2,674,090.15
+    lts__t_sectors_lookup_hit.avg       sector   447,822.00   469,951.50   467,417.20
+    lts__t_sectors_lookup_hit.max       sector   448,123.00   473,081.00   468,371.73
+    lts__t_sectors_lookup_hit.min       sector   447,570.00   469,733.00   466,442.27
+    lts__t_sectors_lookup_hit.sum       sector 1,791,288.00 1,879,806.00 1,869,668.81
+    lts__t_sectors_lookup_miss.avg      sector   285,653.00   287,525.00   286,698.96
+    lts__t_sectors_lookup_miss.max      sector   285,748.00   287,668.00   286,832.25
+    lts__t_sectors_lookup_miss.min      sector   285,556.00   287,404.00   286,548.42
+    lts__t_sectors_lookup_miss.sum      sector 1,142,612.00 1,150,100.00 1,146,795.83
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  ampere_sgemm_32x32_sliced1x4_tn (32, 4, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ---------- ---------- ----------
+    Metric Name                    Metric Unit    Minimum    Maximum    Average
+    ------------------------------ ----------- ---------- ---------- ----------
+    l1tex__t_sectors.sum                sector 218,160.00 218,160.00 218,160.00
+    lts__t_sectors.sum                  sector 160,501.00 160,501.00 160,501.00
+    lts__t_sectors_lookup_hit.avg       sector  32,892.00  32,892.00  32,892.00
+    lts__t_sectors_lookup_hit.max       sector  33,372.00  33,372.00  33,372.00
+    lts__t_sectors_lookup_hit.min       sector  32,299.00  32,299.00  32,299.00
+    lts__t_sectors_lookup_hit.sum       sector 131,568.00 131,568.00 131,568.00
+    lts__t_sectors_lookup_miss.avg      sector   6,882.00   6,882.00   6,882.00
+    lts__t_sectors_lookup_miss.max      sector   6,912.00   6,912.00   6,912.00
+    lts__t_sectors_lookup_miss.min      sector   6,864.00   6,864.00   6,864.00
+    lts__t_sectors_lookup_miss.sum      sector  27,528.00  27,528.00  27,528.00
+    ------------------------------ ----------- ---------- ---------- ----------
+
+  ampere_sgemm_64x64_tt (3, 370, 1)x(64, 1, 1), Device 0, CC 8.7, Invocations 24
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 7,381,440.00 7,381,440.00 7,381,440.00
+    lts__t_sectors.sum                  sector 6,150,071.00 6,331,416.00 6,245,541.88
+    lts__t_sectors_lookup_hit.avg       sector 1,324,816.00 1,396,874.75 1,351,395.76
+    lts__t_sectors_lookup_hit.max       sector 1,327,652.00 1,397,905.00 1,352,131.54
+    lts__t_sectors_lookup_hit.min       sector 1,322,510.00 1,396,172.00 1,350,662.25
+    lts__t_sectors_lookup_hit.sum       sector 5,299,264.00 5,587,499.00 5,405,583.04
+    lts__t_sectors_lookup_miss.avg      sector   286,934.00   287,164.00   287,068.46
+    lts__t_sectors_lookup_miss.max      sector   286,996.00   287,264.00   287,128.67
+    lts__t_sectors_lookup_miss.min      sector   286,876.00   287,112.00   287,013.67
+    lts__t_sectors_lookup_miss.sum      sector 1,147,736.00 1,148,656.00 1,148,273.83
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void <unnamed>::softmax_warp_forward<float, float, float, 10, 1, 0>(T2 *, const T1 *, int, int, int, const bool *, int, bool) (30, 1, 1)x(32, 4, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- --------- --------- ---------
+    Metric Name                    Metric Unit   Minimum   Maximum   Average
+    ------------------------------ ----------- --------- --------- ---------
+    l1tex__t_sectors.sum                sector 30,000.00 30,000.00 30,000.00
+    lts__t_sectors.sum                  sector 30,581.00 30,581.00 30,581.00
+    lts__t_sectors_lookup_hit.avg       sector  3,788.25  3,788.25  3,788.25
+    lts__t_sectors_lookup_hit.max       sector  3,797.00  3,797.00  3,797.00
+    lts__t_sectors_lookup_hit.min       sector  3,780.00  3,780.00  3,780.00
+    lts__t_sectors_lookup_hit.sum       sector 15,153.00 15,153.00 15,153.00
+    lts__t_sectors_lookup_miss.avg      sector  3,857.00  3,857.00  3,857.00
+    lts__t_sectors_lookup_miss.max      sector  3,876.00  3,876.00  3,876.00
+    lts__t_sectors_lookup_miss.min      sector  3,840.00  3,840.00  3,840.00
+    lts__t_sectors_lookup_miss.sum      sector 15,428.00 15,428.00 15,428.00
+    ------------------------------ ----------- --------- --------- ---------
+
+  void at::<unnamed>::CatArrayBatchedCopy<at::<unnamed>::OpaqueType<4>, unsigned int, 3, 64, 64>(T1 *, at::<unnamed>::CatArrInputTensorMetadata<T1, T2, T4, T5>, at::<unnamed>::TensorSizeStride<T2, 4>, int, T2) (16, 3, 1)x(512, 1, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 5,086,080.00 5,086,080.00 5,086,080.00
+    lts__t_sectors.sum                  sector 2,168,348.00 2,168,348.00 2,168,348.00
+    lts__t_sectors_lookup_hit.avg       sector   372,401.00   372,401.00   372,401.00
+    lts__t_sectors_lookup_hit.max       sector   372,494.00   372,494.00   372,494.00
+    lts__t_sectors_lookup_hit.min       sector   372,313.00   372,313.00   372,313.00
+    lts__t_sectors_lookup_hit.sum       sector 1,489,604.00 1,489,604.00 1,489,604.00
+    lts__t_sectors_lookup_miss.avg      sector   167,535.50   167,535.50   167,535.50
+    lts__t_sectors_lookup_miss.max      sector   167,579.00   167,579.00   167,579.00
+    lts__t_sectors_lookup_miss.min      sector   167,490.00   167,490.00   167,490.00
+    lts__t_sectors_lookup_miss.sum      sector   670,142.00   670,142.00   670,142.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void at::<unnamed>::nll_loss_forward_reduce_cuda_kernel_2d<float, float, long>(T1 *, T1 *, const T1 *, const T3 *, const T1 *, bool, long, long, long, long) (1, 1, 1)x(32, 1, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------- ------- -------
+    Metric Name                    Metric Unit Minimum Maximum Average
+    ------------------------------ ----------- ------- ------- -------
+    l1tex__t_sectors.sum                sector  152.00  152.00  152.00
+    lts__t_sectors.sum                  sector  569.00  569.00  569.00
+    lts__t_sectors_lookup_hit.avg       sector   24.00   24.00   24.00
+    lts__t_sectors_lookup_hit.max       sector   27.00   27.00   27.00
+    lts__t_sectors_lookup_hit.min       sector   18.00   18.00   18.00
+    lts__t_sectors_lookup_hit.sum       sector   96.00   96.00   96.00
+    lts__t_sectors_lookup_miss.avg      sector  102.25  102.25  102.25
+    lts__t_sectors_lookup_miss.max      sector  106.00  106.00  106.00
+    lts__t_sectors_lookup_miss.min      sector   91.00   91.00   91.00
+    lts__t_sectors_lookup_miss.sum      sector  409.00  409.00  409.00
+    ------------------------------ ----------- ------- ------- -------
+
+  void at::elementwise_kernel<128, 2, void at::gpu_kernel_impl_nocast<at::CUDAFunctor_add<float>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3) (17640, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 1,270,080.00 1,270,080.00 1,270,080.00
+    lts__t_sectors.sum                  sector 1,129,677.00 1,129,677.00 1,129,677.00
+    lts__t_sectors_lookup_hit.avg       sector   141,205.00   141,205.00   141,205.00
+    lts__t_sectors_lookup_hit.max       sector   141,284.00   141,284.00   141,284.00
+    lts__t_sectors_lookup_hit.min       sector   141,153.00   141,153.00   141,153.00
+    lts__t_sectors_lookup_hit.sum       sector   564,820.00   564,820.00   564,820.00
+    lts__t_sectors_lookup_miss.avg      sector   141,214.25   141,214.25   141,214.25
+    lts__t_sectors_lookup_miss.max      sector   141,216.00   141,216.00   141,216.00
+    lts__t_sectors_lookup_miss.min      sector   141,209.00   141,209.00   141,209.00
+    lts__t_sectors_lookup_miss.sum      sector   564,857.00   564,857.00   564,857.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void at::elementwise_kernel<128, 2, void at::gpu_kernel_impl_nocast<at::CUDAFunctor_add<float>>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3) (17730, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 1,702,080.00 1,702,080.00 1,702,080.00
+    lts__t_sectors.sum                  sector 1,439,105.00 1,439,105.00 1,439,105.00
+    lts__t_sectors_lookup_hit.avg       sector   216,332.00   216,332.00   216,332.00
+    lts__t_sectors_lookup_hit.max       sector   216,981.00   216,981.00   216,981.00
+    lts__t_sectors_lookup_hit.min       sector   215,919.00   215,919.00   215,919.00
+    lts__t_sectors_lookup_hit.sum       sector   865,328.00   865,328.00   865,328.00
+    lts__t_sectors_lookup_miss.avg      sector   143,978.25   143,978.25   143,978.25
+    lts__t_sectors_lookup_miss.max      sector   144,048.00   144,048.00   144,048.00
+    lts__t_sectors_lookup_miss.min      sector   143,845.00   143,845.00   143,845.00
+    lts__t_sectors_lookup_miss.sum      sector   575,913.00   575,913.00   575,913.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void at::elementwise_kernel<128, 2, void at::gpu_kernel_impl_nocast<at::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3) (1478, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 96
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ---------- ---------- ----------
+    Metric Name                    Metric Unit    Minimum    Maximum    Average
+    ------------------------------ ----------- ---------- ---------- ----------
+    l1tex__t_sectors.sum                sector 425,520.00 425,520.00 425,520.00
+    lts__t_sectors.sum                  sector 241,656.00 270,550.00 260,143.84
+    lts__t_sectors_lookup_hit.avg       sector  50,845.25  57,500.75  53,853.00
+    lts__t_sectors_lookup_hit.max       sector  50,919.00  57,618.00  53,952.06
+    lts__t_sectors_lookup_hit.min       sector  50,767.00  57,419.00  53,763.01
+    lts__t_sectors_lookup_hit.sum       sector 203,381.00 230,003.00 215,412.00
+    lts__t_sectors_lookup_miss.avg      sector  14,856.00  14,856.00  14,856.00
+    lts__t_sectors_lookup_miss.max      sector  14,865.00  14,881.00  14,872.79
+    lts__t_sectors_lookup_miss.min      sector  14,818.00  14,849.00  14,832.52
+    lts__t_sectors_lookup_miss.sum      sector  59,424.00  59,424.00  59,424.00
+    ------------------------------ ----------- ---------- ---------- ----------
+
+  void at::index_elementwise_kernel<128, 4, void at::flip_kernel_impl<at::OpaqueType<4>>(at::TensorIterator &)::[lambda(int) (instance 1)]>(long, T3) (17730, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 24
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 2,592,000.00 2,592,000.00 2,592,000.00
+    lts__t_sectors.sum                  sector 2,567,195.00 2,580,309.00 2,569,920.92
+    lts__t_sectors_lookup_hit.avg       sector   360,313.50   362,909.50   360,649.52
+    lts__t_sectors_lookup_hit.max       sector   360,341.00   362,952.00   360,726.54
+    lts__t_sectors_lookup_hit.min       sector   360,183.00   362,839.00   360,574.71
+    lts__t_sectors_lookup_hit.sum       sector 1,441,254.00 1,451,638.00 1,442,598.08
+    lts__t_sectors_lookup_miss.avg      sector   283,823.25   283,823.25   283,823.25
+    lts__t_sectors_lookup_miss.max      sector   283,829.00   283,829.00   283,829.00
+    lts__t_sectors_lookup_miss.min      sector   283,816.00   283,816.00   283,816.00
+    lts__t_sectors_lookup_miss.sum      sector 1,135,293.00 1,135,293.00 1,135,293.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void at::index_elementwise_kernel<128, 4, void at::flip_kernel_impl<at::OpaqueType<4>>(at::TensorIterator &)::[lambda(int) (instance 1)]>(long, T3) (35460, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 24
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 5,184,000.00 5,184,000.00 5,184,000.00
+    lts__t_sectors.sum                  sector 5,149,950.00 5,171,714.00 5,158,693.96
+    lts__t_sectors_lookup_hit.avg       sector   720,624.75   725,748.25   721,395.07
+    lts__t_sectors_lookup_hit.max       sector   720,774.00   725,965.00   721,576.54
+    lts__t_sectors_lookup_hit.min       sector   720,413.00   725,653.00   721,243.83
+    lts__t_sectors_lookup_hit.sum       sector 2,882,499.00 2,902,993.00 2,885,580.29
+    lts__t_sectors_lookup_miss.avg      sector   567,503.25   567,503.25   567,503.25
+    lts__t_sectors_lookup_miss.max      sector   567,509.00   567,509.00   567,509.00
+    lts__t_sectors_lookup_miss.min      sector   567,496.00   567,496.00   567,496.00
+    lts__t_sectors_lookup_miss.sum      sector 2,270,013.00 2,270,013.00 2,270,013.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void at::vectorized_elementwise_kernel<4, at::BUnaryFunctor<float, float, float, binary_internal::MulFunctor<float>>, std::array<char *, 2>>(int, T2, T3) (17730, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 24
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 2,269,440.00 2,269,440.00 2,269,440.00
+    lts__t_sectors.sum                  sector 2,269,717.00 2,269,717.00 2,269,717.00
+    lts__t_sectors_lookup_hit.avg       sector   283,718.25   283,718.25   283,718.25
+    lts__t_sectors_lookup_hit.max       sector   283,720.00   283,729.00   283,724.62
+    lts__t_sectors_lookup_hit.min       sector   283,712.00   283,716.00   283,712.83
+    lts__t_sectors_lookup_hit.sum       sector 1,134,873.00 1,134,873.00 1,134,873.00
+    lts__t_sectors_lookup_miss.avg      sector   283,711.00   283,711.00   283,711.00
+    lts__t_sectors_lookup_miss.max      sector   283,712.00   283,716.00   283,714.00
+    lts__t_sectors_lookup_miss.min      sector   283,704.00   283,708.00   283,706.00
+    lts__t_sectors_lookup_miss.sum      sector 1,134,844.00 1,134,844.00 1,134,844.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void at::vectorized_elementwise_kernel<4, at::CUDAFunctor_add<float>, std::array<char *, 3>>(int, T2, T3) (17730, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 24
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 3,404,160.00 3,404,160.00 3,404,160.00
+    lts__t_sectors.sum                  sector 3,404,445.00 3,404,445.00 3,404,445.00
+    lts__t_sectors_lookup_hit.avg       sector   283,718.25   283,718.25   283,718.25
+    lts__t_sectors_lookup_hit.max       sector   283,720.00   283,733.00   283,724.96
+    lts__t_sectors_lookup_hit.min       sector   283,712.00   283,716.00   283,712.62
+    lts__t_sectors_lookup_hit.sum       sector 1,134,873.00 1,134,873.00 1,134,873.00
+    lts__t_sectors_lookup_miss.avg      sector   567,393.00   567,393.00   567,393.00
+    lts__t_sectors_lookup_miss.max      sector   567,396.00   567,396.00   567,396.00
+    lts__t_sectors_lookup_miss.min      sector   567,392.00   567,392.00   567,392.00
+    lts__t_sectors_lookup_miss.sum      sector 2,269,572.00 2,269,572.00 2,269,572.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void at::vectorized_elementwise_kernel<4, at::exp_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 2)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, 2>>(int, T2, T3) (12, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 48
+    Section: Command line profiler metrics
+    ------------------------------ ----------- -------- -------- --------
+    Metric Name                    Metric Unit  Minimum  Maximum  Average
+    ------------------------------ ----------- -------- -------- --------
+    l1tex__t_sectors.sum                sector 1,536.00 1,536.00 1,536.00
+    lts__t_sectors.sum                  sector 1,853.00 1,917.00 1,855.67
+    lts__t_sectors_lookup_hit.avg       sector   230.00   230.00   230.00
+    lts__t_sectors_lookup_hit.max       sector   232.00   245.00   236.50
+    lts__t_sectors_lookup_hit.min       sector   224.00   227.00   224.29
+    lts__t_sectors_lookup_hit.sum       sector   920.00   920.00   920.00
+    lts__t_sectors_lookup_miss.avg      sector   233.25   233.25   233.25
+    lts__t_sectors_lookup_miss.max      sector   240.00   256.00   243.98
+    lts__t_sectors_lookup_miss.min      sector   205.00   229.00   218.40
+    lts__t_sectors_lookup_miss.sum      sector   933.00   933.00   933.00
+    ------------------------------ ----------- -------- -------- --------
+
+  void at::vectorized_elementwise_kernel<4, at::neg_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 7)]::operator ()() const::[lambda(float) (instance 1)], std::array<char *, 2>>(int, T2, T3) (12, 1, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 48
+    Section: Command line profiler metrics
+    ------------------------------ ----------- -------- -------- --------
+    Metric Name                    Metric Unit  Minimum  Maximum  Average
+    ------------------------------ ----------- -------- -------- --------
+    l1tex__t_sectors.sum                sector 1,536.00 1,536.00 1,536.00
+    lts__t_sectors.sum                  sector 1,813.00 1,845.00 1,827.00
+    lts__t_sectors_lookup_hit.avg       sector   230.00   230.00   230.00
+    lts__t_sectors_lookup_hit.max       sector   232.00   244.00   236.60
+    lts__t_sectors_lookup_hit.min       sector   224.00   227.00   224.42
+    lts__t_sectors_lookup_hit.sum       sector   920.00   920.00   920.00
+    lts__t_sectors_lookup_miss.avg      sector   223.25   223.25   223.25
+    lts__t_sectors_lookup_miss.max      sector   224.00   229.00   226.29
+    lts__t_sectors_lookup_miss.min      sector   216.00   221.00   218.71
+    lts__t_sectors_lookup_miss.sum      sector   893.00   893.00   893.00
+    ------------------------------ ----------- -------- -------- --------
+
+  void cask__5x_cudnn::computeOffsetsKernel<0, 0>(cask__5x_cudnn::ComputeOffsetsParams) (1, 1, 1)x(256, 1, 1), Device 0, CC 8.7, Invocations 1
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------- ------- -------
+    Metric Name                    Metric Unit Minimum Maximum Average
+    ------------------------------ ----------- ------- ------- -------
+    l1tex__t_sectors.sum                sector   44.00   44.00   44.00
+    lts__t_sectors.sum                  sector  345.00  345.00  345.00
+    lts__t_sectors_lookup_hit.avg       sector   34.50   34.50   34.50
+    lts__t_sectors_lookup_hit.max       sector   42.00   42.00   42.00
+    lts__t_sectors_lookup_hit.min       sector   28.00   28.00   28.00
+    lts__t_sectors_lookup_hit.sum       sector  138.00  138.00  138.00
+    lts__t_sectors_lookup_miss.avg      sector   35.75   35.75   35.75
+    lts__t_sectors_lookup_miss.max      sector   55.00   55.00   55.00
+    lts__t_sectors_lookup_miss.min      sector   24.00   24.00   24.00
+    lts__t_sectors_lookup_miss.sum      sector  143.00  143.00  143.00
+    ------------------------------ ----------- ------- ------- -------
+
+  void causal_conv1d_fwd_kernel<Causal_conv1d_fwd_kernel_traits<128, 4, 0, float, float>>(ConvParamsBase) (120, 384, 1)x(128, 1, 1), Device 0, CC 8.7, Invocations 48
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------ ------------ ------------
+    Metric Name                    Metric Unit      Minimum      Maximum      Average
+    ------------------------------ ----------- ------------ ------------ ------------
+    l1tex__t_sectors.sum                sector 3,755,520.00 3,755,520.00 3,755,520.00
+    lts__t_sectors.sum                  sector 2,488,053.00 2,506,792.00 2,501,520.96
+    lts__t_sectors_lookup_hit.avg       sector   342,367.50   343,627.25   343,240.07
+    lts__t_sectors_lookup_hit.max       sector   342,557.00   343,857.00   343,436.50
+    lts__t_sectors_lookup_hit.min       sector   342,059.00   343,576.00   343,002.48
+    lts__t_sectors_lookup_hit.sum       sector 1,369,470.00 1,374,509.00 1,372,960.27
+    lts__t_sectors_lookup_miss.avg      sector   283,780.00   283,780.00   283,780.00
+    lts__t_sectors_lookup_miss.max      sector   283,784.00   283,800.00   283,790.00
+    lts__t_sectors_lookup_miss.min      sector   283,760.00   283,776.00   283,770.00
+    lts__t_sectors_lookup_miss.sum      sector 1,135,120.00 1,135,120.00 1,135,120.00
+    ------------------------------ ----------- ------------ ------------ ------------
+
+  void selective_scan_fwd_kernel<Selective_Scan_fwd_kernel_traits<32, 8, 1, 0, 1, 1, 1, float, float>>(SSMParamsBase) (120, 384, 1)x(32, 1, 1), Device 0, CC 8.7, Invocations 48
+    Section: Command line profiler metrics
+    ------------------------------ ----------- ------------- ------------- -------------
+    Metric Name                    Metric Unit       Minimum       Maximum       Average
+    ------------------------------ ----------- ------------- ------------- -------------
+    l1tex__t_sectors.sum                sector 53,994,240.00 53,994,240.00 53,994,240.00
+    lts__t_sectors.sum                  sector 43,126,362.00 43,158,038.00 43,143,023.02
+    lts__t_sectors_lookup_hit.avg       sector  1,384,346.75  1,426,390.25  1,421,334.49
+    lts__t_sectors_lookup_hit.max       sector  1,387,466.00  1,428,447.00  1,423,619.29
+    lts__t_sectors_lookup_hit.min       sector  1,381,371.00  1,424,577.00  1,419,175.44
+    lts__t_sectors_lookup_hit.sum       sector  5,537,387.00  5,705,561.00  5,685,337.98
+    lts__t_sectors_lookup_miss.avg      sector  9,361,307.75  9,405,637.75  9,375,214.38
+    lts__t_sectors_lookup_miss.max      sector  9,362,198.00  9,406,687.00  9,375,891.90
+    lts__t_sectors_lookup_miss.min      sector  9,360,789.00  9,404,251.00  9,374,477.92
+    lts__t_sectors_lookup_miss.sum      sector 37,445,231.00 37,622,551.00 37,500,857.50
+    ------------------------------ ----------- ------------- ------------- -------------
+
+  Note: The shown averages are calculated as the arithmetic mean of the metric values after the evaluation of the    
+  metrics for each individual kernel launch.                                                                         
+  If aggregating across varying launch configurations (like shared memory, cache config settings), the arithmetic    
+  mean can be misleading and looking at the individual results is recommended instead.                               
+  This output mode is backwards compatible to the per-kernel summary output of nvprof                                
+
